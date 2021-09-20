@@ -17,7 +17,6 @@ for i in range(1, 10):
     else:
         print('odd')
 
-
 '''
 Dokumentační řetězce v Pythonu (docstrings)
 
@@ -29,6 +28,7 @@ Docstrings se zapisují mezi trojnásobné uvozovky (tedy podobně jako komentá
 Tyto dokumentační řetězce jsou přístupné prostřednictvím "magického" __doc__ atributu funkce.    
 '''
 
+
 # Odsazení bloku kódu uvnitř funkce a použití docstring
 def greet(name):
     """
@@ -36,6 +36,7 @@ def greet(name):
     passed in as a parameter
     """
     print("Ahoj, " + name + "!")
+
 
 # Vypíše docstring spojený s funkcí greet
 print(greet.__doc__)
@@ -50,3 +51,29 @@ aspoň jednu podmínku if a funkci print(). Dodržte správné odsazování kód
 Do konzole vypište nejprve docstring vaší funkce a potom zavolejte funkci samotnou.   
 """
 
+
+def state_your_opinion(things: list):
+    """
+    This function takes in a list of things and iterates over it. You answer if you like them or not
+    """
+
+    def inp_handle(th):
+        """
+        This function uses recursion to ensure correct input has been given
+        """
+        ans = input(f"Do you like {th}? yes/no ")
+        if ans != 'yes' and ans != 'no':
+            return inp_handle(th)
+        else:
+            return ans == 'yes'
+
+    for thing in things:
+        answer = inp_handle(thing)
+        if answer:
+            print(f"You like {thing}")
+        else:
+            print(f"You dont like {thing}")
+
+
+state_your_opinion(["Dogs", "Cats", 'hot weather', "Monty Python"])
+print(state_your_opinion.__doc__)

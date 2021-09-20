@@ -46,11 +46,37 @@ komentáře, proč byl identifikátor použit nesprávně. Navrhněte pod koment
 # import-from = 'China' - identifikátor nesmí obsahovat symbol pomlčky
 import_from = 'China'
 
+# good
 x = 0
-global = 1
+
+# global umoznuje zmenit hodnotu globani promene uvnitr funkce
+# global = 1
+test = 0
+
+
+def change_test():
+    global test
+    test = 20
+
+
+def changes_test_only_as_local_variable():
+    test = 10
+
+
+changes_test_only_as_local_variable()
+print("without global", test)
+
+change_test()
+print("with global", test)
+
 PI = 3.14
 city = "Opava"
-hilda@sspu-opava.cz = 'Hilda Dokonalá'
-password2 = 'TajneHeslo'
-007agent = 'James Bond'
 
+# muze pouze obsahovat znaky a-z, A-Z, cisla a _
+# hilda@sspu-opava.cz = 'Hilda Dokonalá'
+
+password2 = 'TajneHeslo'
+
+# nesmi zacinat cislem
+# 007agent = 'James Bond'
+agent007 = 'James Bond'

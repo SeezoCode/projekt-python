@@ -13,6 +13,7 @@ Příklad importu modulu math. V tomto případě můžeme pomocí tečkového o
 které nám modul math nabízí.
 '''
 import math
+
 print(math.pi)
 print('Goniometrické funkce: sin 45° = {}, cos 45° = {}'.format(math.sin(45), math.cos(45)))
 
@@ -22,7 +23,8 @@ from jméno_modulu import jméno_funkce
 '''
 
 from sys import path
-print(path) # Zobrazuje seznam (list) cest k adresářům, které aplikace využívá
+
+print(path)  # Zobrazuje seznam (list) cest k adresářům, které aplikace využívá
 
 '''
 Moduly math a sys patří k interním modulům, jež jsou součástí standardní instalace Pythonu.
@@ -60,9 +62,10 @@ pip install -r requirements.txt
 # (venv) E:\python\projekt\venv>pip install camelcase
 # Poté tento balíček importujte
 import camelcase
-c = camelcase.CamelCase() # Konstruktor třídy CamelCase() vytvoří objekt v proměnné c
+
+c = camelcase.CamelCase()  # Konstruktor třídy CamelCase() vytvoří objekt v proměnné c
 txt = 'ahoj světáku'
-print(c.hump(txt)) # Metoda hump() přeformátuje předaný řetězec podle zásad camel syntaxe (velká první písmena slov)
+print(c.hump(txt))  # Metoda hump() přeformátuje předaný řetězec podle zásad camel syntaxe (velká první písmena slov)
 
 """
 Cvičení 4:
@@ -75,3 +78,22 @@ Použijte vhodné moduly v Pythonu (včetně jejich případné instalace) k tom
 K řešení prvního úkolu je možné doporučit importovat interní modul datetime
 Řešení dalších dvou úkolů můžete odvodit z příkladů v dokumentaci k externímu modulu dateutil - viz https://pypi.org/project/python-dateutil/
 """
+
+from datetime import datetime
+from datetime import date
+
+today = datetime.today()
+print('today is:', today)
+
+import dateutil.easter as easter
+
+for i in range(1, 6):
+    print('velikonocni nedele:', easter.easter(today.year + i), today)
+
+i = today.year
+while True:
+    setDate = date(i, 12, 24)
+    if setDate.strftime("%A") == 'Sunday':
+        print('stedry den v nedeli je', setDate)
+        break
+    i += 1
