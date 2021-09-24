@@ -1,4 +1,8 @@
 # Znakové řetězce mohou být uvozeny jednoduchými i dvojitými uvozovkami
+import string
+import random
+from typing import Sequence
+
 course_name = "Python programming"
 
 '''
@@ -19,8 +23,8 @@ nepřevádí na odpovídající znaky.3.2. Raw řetězce charakterizuje předpon
 Potom řetězec r'\n' odpovídá dvěma znakům - zpětnému lomítku a znaku n, kdežto řetězec '\n' je jediný znak nového řádku:
 '''
 
-hello = r'Toto je dlouhý řetězec obsahující mnoho\n\
-řádek textu, stejně jej zapisujete i v C.'
+# hello = r'Toto je dlouhý řetězec obsahující mnoho\n\
+# řádek textu, stejně jej zapisujete i v C.'
 
 # print(hello)
 
@@ -158,3 +162,29 @@ funkční kód, tím lepší).
 3. Vytvořte funkci, která vygeneruje náhodná hesla pro počet osob zadaný v parametru tak, aby heslo začínalo
    3 velkými písmeny, pokračovalo 3 malými písmeny, jedním speciálním znakem (-/+*) a končilo 3 náhodnými číslicemi.
 '''
+
+print('-'.join('12. 10. 2020'.split('. ')[::-1]))
+
+
+def to_snake_case(str: str):
+    return '_'.join(str.lower().split(' '))
+
+
+def to_camel_case(str: str):
+    return str[0] + ''.join([x[0].upper() + x[1:] for x in str.lower().split(' ')])[1:]
+
+
+print(to_snake_case('snake case variable'))
+print(to_camel_case('damn its just oneliner'))
+
+
+def random_ch_thrice(chars: Sequence):
+    return random.choice(chars) + random.choice(chars) + random.choice(chars)
+
+
+def password():
+    return random_ch_thrice(string.ascii_uppercase) + random_ch_thrice(string.ascii_lowercase) + \
+           random.choice('-/+*') + random_ch_thrice(string.digits)
+
+
+print(password())
