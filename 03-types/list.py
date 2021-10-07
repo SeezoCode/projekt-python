@@ -294,7 +294,6 @@ zipped = zip(hundreds, unique)
 print(list(zipped))
 # Snažte se vždy o co nejzhuštěnější kód - ideálně na 1 řádku (+ další řádek s kontrolním výpisem proměnné)
 # import knihovny pro generování náhodných čísel
-from random import randint
 
 print(f'\n*************************************\nCvičení 2\n*************************************')
 
@@ -308,8 +307,8 @@ print(f'\n*************************************\nCvičení 2\n******************
 # a) Přidejte do listu persons ještě n-tice (tuples) dalších 2 žen a 2 mužů.
 persons.append(('Karolina', 17, 'žena'))
 persons.append(('Veronika', 20, 'žena'))
-persons.append(('Paul', 17, 'muž'))
-persons.append(('Martin', 17, 'muž'))
+persons.append(('Vojta', 18, 'muž'))
+persons.append(('Yvetta', 17, 'muž'))
 print(persons)
 
 # b) Použijte seznam (list) persons a do proměnné women z něj pomocí lambda výrazu i comprehensions vyhledejte všechny ženy.
@@ -321,6 +320,6 @@ print(persons)
 # Kromě jména, věku a pohlaví v něm budou vypsána i čísla indexů (jako 1. sloupec). Oddělovačem bude středník.
 # Záznamy budou seřazeny podle věku (sestupně).
 persons.sort(key=lambda item: item[1], reverse=True)
-[print(str(i) + ';' + ';'.join(str(y) for y in x), end=';\n') for i, x in enumerate([x for x in persons if x[0].count('i')])]
+[print(str(i) + ';' + ';'.join(str(y) for y in x), end=';\n') for i, x in enumerate([x for x in persons if x[0].lower().count('i')])]
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
